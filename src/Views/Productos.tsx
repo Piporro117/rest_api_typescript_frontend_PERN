@@ -16,6 +16,8 @@ export async function loader() {
         console.error('Error cargando productos:', error);
         return []; // Devuelve un arreglo vacío como fallback
     }
+
+    return null
 }
 
 

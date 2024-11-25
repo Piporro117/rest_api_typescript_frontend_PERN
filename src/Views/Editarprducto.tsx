@@ -45,8 +45,9 @@ const disponibildadOpciones = [
 // creamos un loader para obtener los datos del producto pro su id
 // le pasamos el parametro de la url con esto
 export async function loader({ params }: LoaderFunctionArgs) {
-
-    // checamos que no sea undefined
+    
+    try {
+         // checamos que no sea undefined
     if (params.id !== undefined) {
         const producto = await getProductoPorId(+params.id)
 
@@ -56,6 +57,12 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
         return producto
     }
+    } catch (error) {
+        console.error('Error cargando productos:', error);
+        return []; // Devuelve un arreglo vacío como fallback
+    }
+
+    return null
 }
 
 
