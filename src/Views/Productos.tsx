@@ -9,8 +9,13 @@ import { Producto } from '../Types'
 // creamos la funcion para mostrar todos los prodcutos
 // con louder
 export async function loader() {
-    const productos = await getProductos()
-    return productos
+    try {
+        const productos = await getProductos();
+        return productos;
+    } catch (error) {
+        console.error('Error cargando productos:', error);
+        return []; // Devuelve un arreglo vacío como fallback
+    }
 }
 
 
